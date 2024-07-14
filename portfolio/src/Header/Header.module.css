@@ -1,0 +1,10 @@
+.profileContainer{
+
+    border: 1px solid black;
+    background-color: burlywood;
+}
+
+.profileTitle{
+    color: brown;
+    text-align: center;
+}
