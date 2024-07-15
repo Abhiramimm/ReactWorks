@@ -5,7 +5,7 @@ import picture from "./assets/images/cake.webp"
 function Projects() {
     return (
         <div>
-            <div className="container mt-5">
+            <div className="container mt-5" id='projects'>
 
                 <div class="card mb-3 border shadow  mx-auto p-5" style={{ "width": "800px" }}>
                     <div class="row g-0">

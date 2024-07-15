@@ -3,7 +3,7 @@ import React from 'react'
 function Resume() {
   return (
     <div>
-      <div className="container border shadow mx-auto p-5" style= {{"width": "800px"}}>
+      <div className="container border shadow mx-auto p-5" style= {{"width": "800px"}} id='resume'>
         <div className="row">
         <h3 className='fw-bold'>Experiance</h3>
 

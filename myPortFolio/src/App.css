@@ -1,6 +1,9 @@
+/* hr line styling */
 .new4 {
     border: 2px solid red;
   }
+
+
 
   /* contact form styling */
   body {
@@ -47,3 +50,6 @@
 .form-row .form-group {
     width: 48%;
 }
+
+
+

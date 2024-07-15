@@ -4,7 +4,7 @@ function Contact() {
     return (
         <div>
 
-            <div class="card mb-3 border shadow  mx-auto p-5" style={{ "width": "800px" }}>
+            <div class="card mb-5 border shadow  mx-auto p-5" style={{ "width": "800px" }} id='contact'>
                 <h2 className='text-primary fw-bold text-center mb-2'>Let's talk</h2>
                 <form class="contact-form mt-3">
                     <div class="form-row">

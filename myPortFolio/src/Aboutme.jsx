@@ -5,12 +5,12 @@ import picture from "./assets/images/profile.jpg"
 function Aboutme() {
     return (
         <div>
-            <div className="container mt-5">
+            <div className="container mt-5" id='aboutme'>
 
                 <div class="card mb-3 border shadow  mx-auto" style= {{"width": "800px"}}>
                     <div class="row g-0">
                         <div class="col-md-4 p-4" style={{"background":"#fcf8f4"}}>
-                            <img src={picture} class="img-fluid rounded-circle" alt="..." width="200px" height="200px"/>
+                            <img src={picture} class="rounded-circle object-fit-cover" alt="..." width="200px" height="200px"/>
                             <h2 className='fw-bold text-center'>Maya</h2>
                             <h2 className='fw-bold text-center'>Nelson</h2>
                             <hr className='new4'></hr>
@@ -22,8 +22,8 @@ function Aboutme() {
                                 <h1 class="card-title fw-bold">Hello</h1>
                                 <h4>Here's who I am & what I do</h4>
                                 <div className='mt-5'>
-                                <button className='btn btn-primary me-3 rounded-pill px-5'>Resume</button>
-                                 <button className='btn btn-primary rounded-pill px-5'>Projects</button>
+                                <a className='btn btn-primary me-3 rounded-pill px-5' href='#resume'>Resume</a>
+                                 <a className='btn btn-primary rounded-pill px-5' href='#projects'>Projects</a>
 
 
                                   </div>

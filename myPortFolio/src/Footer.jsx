@@ -5,10 +5,11 @@ function Footer() {
         <div>
 
             <div>
-                <div className="container">
-                    <div className="row container border shadow p-5">
+                <div className="container-fluid border shadow p-5">
+                    <div className="row">
                         <div className="col-6">
-                            © 2035 by Maya Nelson.
+                            <p>                            © 2035 by Maya Nelson.
+                            </p>
                             Powered and secured by Wix
 
                         </div>
