@@ -3,8 +3,10 @@ import React from 'react'
 function Resume() {
   return (
     <div>
-      <div className="container border shadow mx-auto" style= {{"width": "800px"}}>
+      <div className="container border shadow mx-auto p-5" style= {{"width": "800px"}}>
         <div className="row">
+        <h3 className='fw-bold'>Experiance</h3>
+
             <div className="col-4 p-5">
                 <h5 className='text-primary fw-bold'>2035 - Present</h5>
                 <h6>JOB POSITION</h6>
