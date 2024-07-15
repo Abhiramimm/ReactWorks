@@ -9,8 +9,8 @@ function Aboutme() {
 
                 <div class="card mb-3 border shadow  mx-auto" style= {{"width": "800px"}}>
                     <div class="row g-0">
-                        <div class="col-md-4" style={{"background":"#fcf8f4"}}>
-                            <img src={picture} class="img-fluid rounded-circle" alt="..." />
+                        <div class="col-md-4 p-4" style={{"background":"#fcf8f4"}}>
+                            <img src={picture} class="img-fluid rounded-circle" alt="..." width="200px" height="200px"/>
                             <h2 className='fw-bold text-center'>Maya</h2>
                             <h2 className='fw-bold text-center'>Nelson</h2>
                             <hr className='new4'></hr>

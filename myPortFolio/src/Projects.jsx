@@ -1,6 +1,6 @@
 import React from 'react'
 
-import picture from "./assets/images/profile.jpg"
+import picture from "./assets/images/cake.webp"
 
 function Projects() {
     return (

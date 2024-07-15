@@ -5,25 +5,25 @@ function Contact() {
         <div>
 
             <div class="card mb-3 border shadow  mx-auto p-5" style={{ "width": "800px" }}>
-                <h1 className='text-primary fw-bold text-center mb-2'>Let's talk</h1>
+                <h2 className='text-primary fw-bold text-center mb-2'>Let's talk</h2>
                 <form class="contact-form mt-3">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="first-name">First Name *</label>
-                            <input type="text" id="first-name" name="first-name" required />
+                            <label for="first-name" className='mb-2'>First Name *</label>
+                            <input type="text" id="first-name" className='form-control' name="first-name" required />
                         </div>
                         <div class="form-group">
-                            <label for="last-name">Last Name *</label>
-                            <input type="text" id="last-name" name="last-name" required />
+                            <label for="last-name" className='mb-2'>Last Name *</label>
+                            <input type="text" id="last-name" className='form-control' name="last-name" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required />
+                        <label for="email" className='mb-2'>Email *</label>
+                        <input type="email" id="email" className='form-control' name="email" required />
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" />
+                        <label for="subject" className='mb-2'>Subject</label>
+                        <input type="text" id="subject" className='form-control' name="subject" />
                     </div>
                     <div className='mt-3'>
                     <button className='btn btn-primary me-3 rounded-pill px-5'>SEND</button>

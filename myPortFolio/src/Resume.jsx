@@ -6,8 +6,8 @@ function Resume() {
       <div className="container border shadow mx-auto" style= {{"width": "800px"}}>
         <div className="row">
             <div className="col-4 p-5">
-                <h3 className='text-primary fw-bold'>2035 - Present</h3>
-                <h5>JOB POSITION</h5>
+                <h5 className='text-primary fw-bold'>2035 - Present</h5>
+                <h6>JOB POSITION</h6>
                 <p>Company Name</p>
                 <p>Company Location</p>
 
@@ -24,10 +24,10 @@ I’m a great place for you to tell a story and let your users know a little mor
       </div>
       <div className="container border shadow mx-auto mt-3 p-5" style= {{"width": "800px"}}>
         <div className="row">
-            <h2>Education</h2>
+            <h3 className='fw-bold'>Education</h3>
             <div className="col-4 p-5">
-                <h4 className='text-primary fw-bold'>2035 - Present</h4>
-                <h5>JOB POSITION</h5>
+                <h5 className='text-primary fw-bold'>2035 - Present</h5>
+                <h6>JOB POSITION</h6>
                 <p>Company Name</p>
                 <p>Company Location</p>
 
@@ -44,7 +44,7 @@ I’m a great place for you to tell a story and let your users know a little mor
       </div>
       <div className="container border shadow mx-auto mt-3 p-5" style= {{"width": "800px"}}>
         <div className="row">
-            <h1>Professional skillset</h1>
+            <h3 className='fw-bold'>Professional skillset</h3>
             <div className="col-6 p-5">
 
             <ul style={{"list-style-type":"square;"}}>
