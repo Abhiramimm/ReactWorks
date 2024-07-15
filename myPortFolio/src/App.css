@@ -1,0 +1,49 @@
+.new4 {
+    border: 2px solid red;
+  }
+
+  /* contact form styling */
+  body {
+    font-family: Arial, sans-serif;
+}
+
+.contact-form {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+
+.form-group input:required {
+    border-bottom: 2px solid red;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-bottom: 2px solid blue;
+}
+
+.form-row .form-group {
+    width: 48%;
+}
