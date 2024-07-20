@@ -20,7 +20,7 @@ function Footer() {
                                 <p className='fw-bold'>Write</p>
                                 <a href="" className="me-3 link-underline-light">info@mysite.com</a>
                                 <p className='fw-bold'>Follow</p>
-                                <a href="" className='link-underline-light'>
+                                <a href="" className='link-underline-light' >
                                     <i class="fa-brands fa-instagram"></i>
                                     <i class="fa-brands fa-facebook"></i>
                                     <i class="fa-brands fa-twitter"></i>

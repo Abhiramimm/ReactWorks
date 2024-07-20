@@ -23,7 +23,7 @@ function Aboutme() {
                                 <h4>Here's who I am & what I do</h4>
                                 <div className='mt-5'>
                                 <a className='btn btn-primary me-3 rounded-pill px-5' href='#resume'>Resume</a>
-                                 <a className='btn btn-primary rounded-pill px-5' href='#projects'>Projects</a>
+                                 <a className='btn btn-outline-primary rounded-pill px-5' href='#projects'>Projects</a>
 
 
                                   </div>

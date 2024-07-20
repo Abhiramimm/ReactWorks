@@ -28,10 +28,10 @@ I’m a great place for you to tell a story and let your users know a little mor
         <div className="row">
             <h3 className='fw-bold'>Education</h3>
             <div className="col-4 p-5">
-                <h5 className='text-primary fw-bold'>2035 - Present</h5>
-                <h6>JOB POSITION</h6>
-                <p>Company Name</p>
-                <p>Company Location</p>
+                <h5 className='text-primary fw-bold'>2035 - 2035</h5>
+                <h6>UNIVERSITY NAME</h6>
+                <p>Degree Level</p>
+                <p>University Location</p>
 
             </div>
             <div className="col-8 p-5">
@@ -49,7 +49,7 @@ I’m a great place for you to tell a story and let your users know a little mor
             <h3 className='fw-bold'>Professional skillset</h3>
             <div className="col-6 p-5">
 
-            <ul style={{"list-style-type":"square;"}}>
+            <ul style={{"list-style-type":"square"}}>
                 
                     <li className='mb-3'>Entrepreneurial Mindset</li>
                     <li>Teamwork & Collaboration</li>
@@ -58,7 +58,7 @@ I’m a great place for you to tell a story and let your users know a little mor
                 
             </div>
             <div className="col-6 py-5">
-                <ul style={{"list-style-type":"square;"}}>
+                <ul style={{"list-style-type":"square"}}>
                     <li className='mb-3'>Go-to-Market Planning</li>
                     <li>Digital Analytics</li>
                 </ul>

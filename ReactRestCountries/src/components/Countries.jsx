@@ -22,7 +22,7 @@ function Countries({filter}) {
 
     useEffect(()=>{
         getCountries()
-        console.log("inside countries",filter);
+        console.log("inside country",filter);
 
     },[filter])
   return (

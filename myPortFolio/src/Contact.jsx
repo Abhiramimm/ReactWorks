@@ -26,7 +26,7 @@ function Contact() {
                         <input type="text" id="subject" className='form-control' name="subject" />
                     </div>
                     <div className='mt-3'>
-                    <button className='btn btn-primary me-3 rounded-pill px-5'>SEND</button>
+                    <button className='btn btn-outline-primary me-3 rounded-pill px-5'>SEND</button>
 
                     </div>
                 </form>
