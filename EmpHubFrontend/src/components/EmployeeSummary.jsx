@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { employeeListApi } from '../services/api'
+import { employeeDeleteApi, employeeListApi } from '../services/api'
 
-function EmployeeSummary() {
+function EmployeeSummary({refreshRequired,setEmployeeId}) {
 
   const[employees,setEmployees]=useState()
+
+  async function handleEmployeeDelete(id){
+
+    // console.log(id);
+
+    let res= await employeeDeleteApi(id)
+
+    if(res.status>199 && res.status<300){
+
+      fetchEmployees()
+    }
+
+   
+  }
 
   async function fetchEmployees(){
 
@@ -23,14 +37,16 @@ function EmployeeSummary() {
   
   useEffect(()=>{
     fetchEmployees()
-  },[])
+  },[refreshRequired])
 
   return (
     <div>
        <div className="container">
         <div className="row">
           <div className="col-2">
-            <div className="col-8">
+          
+          </div>
+          <div className="col-8">
               <table className='table'>
                 <tr>
                   <th>NAME</th>
@@ -42,6 +58,7 @@ function EmployeeSummary() {
                   <th>PHONE</th>
                   <th>DATEOFJOIN</th>
                   <th>PICTURE</th>
+                  <th>Action</th>
                 </tr>
                 <tbody>
                   {employees && employees.map((e,i)=>(
@@ -54,12 +71,18 @@ function EmployeeSummary() {
                       <td>{e.address}</td>
                       <td>{e.phone}</td>
                       <td>{e.dateofjoin}</td>
-                      <td>{e.picture}</td>
+                      <td><img src={e.picture} style={{width:"200px",height:"200px"}} alt="" /></td>
+                      <td>
+                        <button className='btn btn-outline-danger' onClick={()=>handleEmployeeDelete(e.id)}>Delete</button>
+                        <button className='btn btn-outline-warning' onClick={()=>setEmployeeId(e.id)}>Edit</button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+          <div className="col-2">
+
           </div>
         </div>
        </div>

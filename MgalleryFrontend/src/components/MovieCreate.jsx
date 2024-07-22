@@ -1,19 +1,44 @@
-import React, { useState } from 'react'
-import { movieCreateApi } from '../services/api'
+import React, { useEffect, useState } from 'react'
+import { movieCreateApi, movieDetailApi,movieUpdateApi } from '../services/api'
 
-function MovieCreate({setrefreshRequired}) {
+function MovieCreate({setrefreshRequired,movieId}) {
 
   const [movie,setMovie]=useState({title:"",year:"",director:"",runtime:"",language:"",poster:""})
 
+  
+  useEffect(()=>{
+    getMovieDetails(movieId)},
+    [movieId])
+
+    async function getMovieDetails(movieId){
+
+    let res= await movieDetailApi(movieId)
+
+    // console.log(res.data);
+
+    if (res.status>199 && res.status<300){
+
+      setMovie(res.data)
+    }
+
+
+  }
   async function handleSubmit(event){
 
     event.preventDefault()
 
     // console.log(movie);
      
-    let res= await movieCreateApi(movie)
+    if(movieId){
 
-    console.log(res);
+      let res= await movieUpdateApi(movieId,movie)
+
+    }
+    else{
+      let res= await movieCreateApi(movie)
+    }
+
+    // console.log(res);
 
     setrefreshRequired("reload")
 
@@ -27,9 +52,12 @@ function MovieCreate({setrefreshRequired}) {
 
       <div className="container mb-3">
         <div className="row">
-          <div className="col-2"></div>
+          <div className="col-2">
+            
+          </div>
           <div className="col-8 border border-3 rounded shadow p-4">
-            <h3 className='text-center my-2'>Add New  Movie </h3>
+            {movieId?<h3 className='text-center my-2'>Edit Movie </h3> : <h3 className='text-center my-2'>Add New  Movie </h3>
+            }
             <form action="" onSubmit={handleSubmit}>
               <div className="mb-3 d-flex gap-1">
                 <div className='w-50'>
@@ -37,6 +65,7 @@ function MovieCreate({setrefreshRequired}) {
                   <input 
                   type="text" 
                   className='form-control'
+                  value={movie.title}
                   onChange={(e)=>setMovie({...movie,title:e.target.value})}
  
                   />
@@ -47,6 +76,7 @@ function MovieCreate({setrefreshRequired}) {
                   <input 
                   type="text" 
                   className='form-control'
+                  value={movie.director}
                   onChange={(e)=>setMovie({...movie,director:e.target.value})}
                    />
                 </div>
@@ -57,6 +87,7 @@ function MovieCreate({setrefreshRequired}) {
                   <input 
                   type="text" 
                   className='form-control' 
+                  value={movie.year}
                   onChange={(e)=>setMovie({...movie,year:e.target.value})}
                   />
                 </div>
@@ -66,6 +97,7 @@ function MovieCreate({setrefreshRequired}) {
                   <input 
                   type="text" 
                   className='form-control' 
+                  value={movie.language}
                   onChange={(e)=>setMovie({...movie,language:e.target.value})}
 
                   />
@@ -77,6 +109,7 @@ function MovieCreate({setrefreshRequired}) {
                   <input 
                   type="text" 
                   className='form-control' 
+                  value={movie.runtime}
                   onChange={(e)=>setMovie({...movie,runtime:e.target.value})}
 
                   />
@@ -94,7 +127,7 @@ function MovieCreate({setrefreshRequired}) {
                 </div>
               </div>
               <div className="mb-3">
-                <button type='submit'>Add</button>
+                {movieId?<button type='submit'>Edit</button> : <button type='submit'>Add</button>}
               </div>
             </form>
           </div>

@@ -9,7 +9,12 @@ export async function employeeListApi(){
 
 export async function employeeCreateApi(data){
 
-    return await axios.post(baseUrl,data)
+    let headers={
+        "Content-Type":"multipart/form-data"
+    }
+
+
+    return await axios.post(baseUrl,data,{headers:headers})
 }
 
 export async function employeeDetailApi(id){
