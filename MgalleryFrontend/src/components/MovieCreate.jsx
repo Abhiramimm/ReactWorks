@@ -33,15 +33,28 @@ function MovieCreate({setrefreshRequired,movieId}) {
 
       let res= await movieUpdateApi(movieId,movie)
 
+      setrefreshRequired(Math.random)
+
+
     }
     else{
       let res= await movieCreateApi(movie)
+
+          setrefreshRequired(Math.random)
+
+          reSet()
+
     }
 
     // console.log(res);
 
-    setrefreshRequired("reload")
 
+
+  }
+
+  function reSet(){
+      
+    setMovie({title:"",year:"",director:"",runtime:"",language:"",poster:null})
 
   }
 

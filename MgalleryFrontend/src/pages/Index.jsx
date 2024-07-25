@@ -5,7 +5,7 @@ import MovieSummary from '../components/MovieSummary'
 
 function Index() {
 
-  const [refreshRequired,setrefreshRequired]=useState("")
+  const [refreshRequired,setrefreshRequired]=useState()
 
   const [movieId,setMovieId]=useState()
 

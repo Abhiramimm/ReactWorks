@@ -24,11 +24,15 @@ export async function employeeDetailApi(id){
 
 export async function employeeUpdateApi(id,data){
 
-    return await axios.put(baseUrl+`${id}/`,data)
+    let headers={
+        "Content-Type":"multipart/form-data"
+    }
+
+    return await axios.put(baseUrl+`${id}/`,data,{headers:headers})
 }
 
 export async function employeeDeleteApi(id){
 
-    return await axios.delete(baseUrl+`${id}`)
+    return await axios.delete(baseUrl+`${id}/`)
 
 }

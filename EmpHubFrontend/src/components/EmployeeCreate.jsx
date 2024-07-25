@@ -38,21 +38,35 @@ function EmployeeCreate({setrefreshRequired,employeeId}) {
 
       let res= await employeeUpdateApi(employeeId,employee)
 
+      setrefreshRequired(Math.random)
+
+      
+
     }
     else{
       let res= await employeeCreateApi(employee)
+
+      setrefreshRequired(Math.random)
+
+      reSet()
     }
 
 
-    setrefreshRequired("reload")
+    // setrefreshRequired("reload")
 
+
+  }
+
+  function reSet(){
+      
+    setEmployee({ name: "", department: "", salary: "", location: "", email: "", address: "", phone: "", dateofjoin: "", picture: "" })
 
   }
   return (
     <div>
       <div>
 
-        <div className="container mb-3">
+        <div className="container mb-3 mt-5">
           <div className="row">
             <div className="col-2"></div>
             <div className="col-8 border border-3 rounded shadow p-4">

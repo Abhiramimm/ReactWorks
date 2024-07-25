@@ -70,7 +70,7 @@ function MovieSummary({ refreshRequired,setMovieId }) {
                     <td>{m.year}</td>
                     <td>{m.language}</td>
                     <td><img src={m.poster} style={{ width: "200px", height: "200px" }} alt="" /></td>
-                    <td className='d-flex gap-2'>
+                    <td className='d-flex gap-3'>
                       <button className='btn btn-outline-danger' onClick={()=>handleMovieDelete(m.id)}>Delete</button>
                       <button className='btn btn-outline-warning' onClick={()=>setMovieId(m.id)}>Edit</button>
 

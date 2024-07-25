@@ -5,7 +5,7 @@ import EmployeeSummary from '../components/EmployeeSummary'
 
 function Index() {
 
-  const [refreshRequired,setrefreshRequired]=useState("")
+  const [refreshRequired,setrefreshRequired]=useState()
 
   const [employeeId,setEmployeeId]=useState()
 

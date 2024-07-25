@@ -8,7 +8,7 @@ function Countries({filter}) {
         let baseUrl="https://restcountries.com/v2/all/"
 
         if(filter){
-            baseUrl=`https://restcountries.com/v2/name/${filter}`
+            baseUrl=`https://restcountries.com/v2/name/${filter}?fullText=true`
         }
         
         let response=await fetch(baseUrl)
