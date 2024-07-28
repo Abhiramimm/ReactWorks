@@ -3,12 +3,15 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addCustomerApi } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
-function CustomerCreate() {
+function CustomerCreate({cls,custId}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const navigate=useNavigate()
 
     const [customer,setCustomer]=useState({name:"",phone:"",email:"",vehicle_no:"",running_km:""})
 
@@ -19,12 +22,17 @@ function CustomerCreate() {
         console.log(res);
 
         setShow(false)
+
+        if (res.status>199 && res.status<300){
+
+          navigate(`customer/${res.data.id}`)
+        }
     }
   
     return (
       <>
-        <Button className='btn btn-info p-3' onClick={handleShow}>
-          AddNewCustomer
+        <Button className='btn btn-info' onClick={handleShow}>
+          <i className={cls} ></i>
         </Button>
   
         <Modal show={show} onHide={handleClose}>
