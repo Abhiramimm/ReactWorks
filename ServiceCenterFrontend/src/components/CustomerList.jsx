@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { listCustomerApi } from '../services/api'
+import { deleteCustomerApi, listCustomerApi } from '../services/api'
 
 import Button from 'react-bootstrap/Button';
 import CustomerCreate from './CustomerCreate';
@@ -7,6 +7,20 @@ import CustomerCreate from './CustomerCreate';
 function CustomerList() {
 
     const [customers, setCustomers] = useState()
+
+    const [reloadRequired,setReloadRequired]=useState()
+
+
+    async function handleDelete(custId){
+
+        let res= await deleteCustomerApi(custId)
+
+            if(res.status>199 && res.status<300){
+
+                fetchAllCustomers()
+            }
+        
+    }
 
     async function fetchAllCustomers() {
 
@@ -23,7 +37,7 @@ function CustomerList() {
     useEffect(() => {
 
         fetchAllCustomers()
-    }, [])
+    }, [reloadRequired])
     return (
         <div>
         {customers && customers.map((cust,i)=><div class="card my-3" >
@@ -81,12 +95,12 @@ function CustomerList() {
          
                      <div class="mb-2">
                         
-                         <CustomerCreate cls={"fa-solid fa-pen-to-square"} custId={cust.id}></CustomerCreate>
+                         <CustomerCreate cls={"fa-solid fa-pen-to-square"} custId={cust.id} setReloadRequired={setReloadRequired}></CustomerCreate>
          
                      </div>
          
                      <div class="mb-2"> 
-                     <Button className='btn btn-primary' >
+                     <Button className='btn btn-primary' onClick={()=>handleDelete(cust.id)}>
                      <i class="fa-solid fa-trash"></i>
                      </Button>
                         

@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+                                                                                                                                                            import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import { addWorkApi } from '../services/api';
+import { addWorkApi, retrieveWorkApi ,updateWorkApi} from '../services/api';
 
 
-function WorkCreate({custId}) {
+function WorkCreate({custId,setRefreshRequired,workId}) {
+    async function handleUpdate(){
+
+        let res=await updateWorkApi(workId,work)
+
+        if(res.status>199 && res.status<300){
+            setRefreshRequired(Math.random())
+            formReset()
+
+        }
+    }                               
 
     const [work,setWork]=useState({title:"",description:"",amount:""})
 
@@ -17,13 +27,36 @@ function WorkCreate({custId}) {
 
         console.log(res.data);
 
+        if(res.status>199 && res.status<300){
+
+            setRefreshRequired(Math.random())
+            formReset()
+        }
+
 
     }
+
+    function formReset(){
+
+        setWork({title:"",description:"",amount:""})
+    }
+
+    async function fetchWorkDetail(workId){
+
+        let res=await retrieveWorkApi(workId) 
+        
+        if(res.status>199 && res.status<300){
+            setWork(res.data)
+        }
+    }
+    useEffect(()=>{fetchWorkDetail(workId)},[workId])
   return (
     <div className='border border-2 border-dark p-3 rounded'>
-
+                                                     
             <div className="row ">
-                <h5 className='fw-bold text-center'>Add Work</h5>
+                {workId? <h5 className='fw-bold text-center'>Edit Work</h5>: <h5 className='fw-bold text-center'>Add Work</h5>
+
+}
                 <div className="col-4">
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="inputGroup-sizing-default">
@@ -32,6 +65,7 @@ function WorkCreate({custId}) {
                         <Form.Control
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
+                            value={work.title}
                             onChange={(e)=>setWork({...work,title:e.target.value})}
                         />
                     </InputGroup>
@@ -44,6 +78,7 @@ function WorkCreate({custId}) {
                         <Form.Control
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
+                            value={work.description}
                             onChange={(e)=>setWork({...work,description:e.target.value})}
 
                         />
@@ -57,12 +92,15 @@ function WorkCreate({custId}) {
                         <Form.Control
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
+                            value={work.amount}
                             onChange={(e)=>setWork({...work,amount:e.target.value})}
 
                         />
-                        <Button variant="secondary" id="button-addon2" onClick={handleFormSubmit}>
+                       {workId? <Button variant="secondary" id="button-addon2" onClick={handleUpdate}>
+                            Edit
+                        </Button>: <Button variant="secondary" id="button-addon2" onClick={handleFormSubmit}>
                             Add
-                        </Button>
+                        </Button>}
                     </InputGroup>
                 </div>
             </div>

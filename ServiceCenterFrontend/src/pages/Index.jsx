@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CustomerCreate from '../components/CustomerCreate'
 import CustomerList from '../components/CustomerList'
 
 function Index() {
+
   return (
     <div>
       <div className='container d-flex justify-content-end my-2'>
-      <CustomerCreate cls={"fa-solid fa-plus"} custId={null}></CustomerCreate>
+      <CustomerCreate cls={"fa-solid fa-plus"} custId={null} ></CustomerCreate>
 
       </div>
       <div className="container">

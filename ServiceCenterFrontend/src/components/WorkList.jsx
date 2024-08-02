@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { retrieveCustomerApi } from '../services/api'
+import { deleteWorkApi, retrieveCustomerApi } from '../services/api'
+import Button from 'react-bootstrap/Button';
 
-function WorkList({custId}) {
+
+function WorkList({custId,refreshRequired,setWorkId}) {
 
     const[works,setWorks]=useState()
 
     const [workTotal,setWorkTotal]=useState()
+
+    async function handleDelete(workId){
+
+      let res=await deleteWorkApi(workId)
+
+      if(res.status>199 && res.status<300){
+
+        fetchCustomerData(custId)
+      }
+
+    }
 
     async function fetchCustomerData(custId){
 
@@ -24,7 +37,7 @@ function WorkList({custId}) {
 
     }
 
-    useEffect(()=>{fetchCustomerData(custId)},[])
+    useEffect(()=>{fetchCustomerData(custId)},[refreshRequired])
 
   return (
     <div className='mt-3 border border-2 border-dark p-3 rounded'>
@@ -33,6 +46,7 @@ function WorkList({custId}) {
           <th>Title</th>
           <th>Description</th>
           <th>Amount</th>
+          <th>Action</th>
         </tr>
         <tbody>
           {works && works.map((w,i)=>
@@ -40,8 +54,26 @@ function WorkList({custId}) {
            <td>{w.title}</td>
           <td>{w.description}</td>
           <td>{w.amount}</td>
+          <td className='d-flex gap-2'>
+                        <Button className='btn btn-danger' onClick={()=>handleDelete(w.id)}>
+                        <i class="fa-solid fa-trash"></i>
+                        </Button>
+
+                        <Button className='btn btn-warning'  onClick={()=>setWorkId(w.id)}>
+                        <i class=" fa-solid fa-pen-to-square"></i>
+                        </Button>
+                       
+
+
+                    </td>
          </tr>
           )}
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total:{workTotal}</td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>

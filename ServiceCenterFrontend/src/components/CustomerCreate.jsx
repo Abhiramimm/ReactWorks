@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { addCustomerApi } from '../services/api';
+import { addCustomerApi, editCustomerApi, retrieveCustomerApi } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
-function CustomerCreate({cls,custId}) {
+function CustomerCreate({cls,custId,setReloadRequired}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -17,18 +17,48 @@ function CustomerCreate({cls,custId}) {
 
     async function handleFormSubmit(){
 
+      if(custId){
+        //edit logic
+        let res= await editCustomerApi(custId,customer)
+
+        if(res.status>199 && res.status<300){
+
+          setReloadRequired(Math.random())
+
+          setShow(false)
+        }
+      }
+
+      else {
+        // add logic
+        
         let res= await addCustomerApi(customer)
 
         console.log(res);
 
         setShow(false)
 
-        if (res.status>199 && res.status<300){
+        navigate(`/customer/${res.data.id}`)
+        
+      }
 
-          navigate(`customer/${res.data.id}`)
-        }
     }
-  
+
+
+    async function fetchCustomerDetail(custId){
+
+      let res= await retrieveCustomerApi(custId)
+      if(res.status>199 && res.status<300){
+      setCustomer(res.data)
+
+    }
+
+    }
+    useEffect(()=>{fetchCustomerDetail(custId)},[custId])
+
+      
+    
+
     return (
       <>
         <Button className='btn btn-info' onClick={handleShow}>
@@ -37,7 +67,9 @@ function CustomerCreate({cls,custId}) {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add New Customer</Modal.Title>
+            {custId? <Modal.Title>Edit Customer</Modal.Title>
+            :<Modal.Title>Add New Customer</Modal.Title>
+            }
           </Modal.Header>
           <Modal.Body>
             <form action="">
@@ -46,6 +78,7 @@ function CustomerCreate({cls,custId}) {
                     <input 
                     type="text"  
                     className='form-control'
+                    value={customer.name}
                     onChange={(e)=>setCustomer({...customer,name:e.target.value})}
 
                     />
@@ -55,6 +88,7 @@ function CustomerCreate({cls,custId}) {
                     <input 
                     type="text"  
                     className='form-control'
+                    value={customer.phone}
                     onChange={(e)=>setCustomer({...customer,phone:e.target.value})}
                     />
                 </div>
@@ -63,6 +97,7 @@ function CustomerCreate({cls,custId}) {
                     <input 
                     type="text"  
                     className='form-control'
+                    value={customer.email}
                     onChange={(e)=>setCustomer({...customer,email:e.target.value})}
 
                     />
@@ -72,6 +107,7 @@ function CustomerCreate({cls,custId}) {
                     <input 
                     type="text"  
                     className='form-control'
+                    value={customer.vehicle_no}
                     onChange={(e)=>setCustomer({...customer,vehicle_no:e.target.value})}
 
                     />
@@ -81,6 +117,7 @@ function CustomerCreate({cls,custId}) {
                     <input 
                     type="text"  
                     className='form-control'
+                    value={customer.running_km}
                     onChange={(e)=>setCustomer({...customer,running_km:e.target.value})}
 
                     />
